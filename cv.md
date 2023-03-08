@@ -17,82 +17,17 @@ _HTML_
 _CSS_
 ***
 ```
-public class Book {
-   private String title;
-    private String author;
-    private String isbn;
-    private int year;
-    private int quantity;
-    private boolean isChildBook;
+#include<iostream> #include<string> using namespace std;
 
-    public Book(String title, String author, String isbn, int year, int quantity, boolean isChildBook) {
-        this.title = title;
-        this.author = author;
-        this.isbn = isbn;
-        this.year = year;
-        this.quantity = quantity;
-        this.isChildBook = isChildBook;
-    }
+struct Book { string title; int price; string type; int sold; };
 
-    public boolean isChildBook() {
-        return isChildBook;
-    }
+int main() { int n; cin >> n; Book* book = new Book[n];
 
-    public void setChildBook(boolean childBook) {
-        isChildBook = childBook;
-    }
+for (int i = 0; i < n; i++) {    cin >> book[i].title >> book[i].price >> book[i].type >> book[i].sold; } int sum3 = 0; for (int i = 0; i < n; i++) {    if (book[i].type == "Classical") {      book[i].price = book[i].price * 0.8;    }
 
-    public String getTitle() {
-        return title;
-    }
+  if (book[i].sold > 50) {      book[i].price += 50 * book[i].price;            book[i].price *= 1.2;            book[i].price += (book[i].sold - 50) * book[i].price;    }    else {            book[i].price += book[i].sold * book[i].price;    sum3 += book[i].price;
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", isbn='" + isbn + '\'' +
-                ", year=" + year +
-                ", quantity=" + quantity +
-                '}';
-    }
-}
+  cout << book[i].title << " " << book[i].price << endl; } cout << "Total " <<sum3; } }
 ```
 ***
 __Work experience__
